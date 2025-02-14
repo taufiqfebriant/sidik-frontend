@@ -11,7 +11,7 @@ type Product = {
   name: string
   description: string
   price: number
-  image: string
+  image: string | null
   created_at: string
   updated_at: string
 }
@@ -85,7 +85,7 @@ const fetchPage = (pageNumber: Data['current_page']) => {
           <Card>
             <div class="h-48 w-full rounded bg-[#eef0f2] flex items-center justify-center">
               <div class="h-32 w-32 relative">
-                <img :src="product.image" :alt="product.name" class="object-cover" />
+                <img v-if="product.image" :src="product.image" :alt="product.name" class="object-cover" />
               </div>
             </div>
 

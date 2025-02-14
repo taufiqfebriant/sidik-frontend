@@ -39,6 +39,10 @@ const columns: ColumnDef<Product>[] = [
     header: 'Image',
     cell: ({ row }) => {
       const imageUrl = row.getValue('image');
+      if (!imageUrl) {
+        return ''
+      }
+
       return h('img', { src: imageUrl ?? '', alt: row.getValue('name'), class: 'w-16 h-16 object-cover' });
     },
   },

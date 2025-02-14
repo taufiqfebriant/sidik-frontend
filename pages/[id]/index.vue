@@ -15,7 +15,7 @@ export interface Data {
   name: string
   description: string
   price: number
-  image: string
+  image: string | null
   created_at: string
   updated_at: string
 }
@@ -65,7 +65,8 @@ const addToCart = (product: Data) => {
 
   <div v-else class="flex flex-col md:flex-row md:gap-x-6" v-if="product">
     <div class="w-full md:w-72 md:h-72">
-      <NuxtImg :src="product.image" :alt="product.name" class="w-full h-auto rounded-lg shadow-lg" />
+      <NuxtImg :src="product.image" v-if="product.image" :alt="product.name"
+        class="w-full h-auto rounded-lg shadow-lg" />
     </div>
 
     <div class="flex-1">
